@@ -3,7 +3,7 @@
 ## 项目介绍
 AppiumAir是基于Appium二次封装的Android自动化框架，多线程方式在多台手机上同时执行测试，自动获取已连接各设备信息，自动启动已连接设备相同多个appium服务，多个测试用例连续执行，用例执行失败自动截图、录制视频、收集报错信息，列表中高亮显示，全新报告模板，内容全面，样式新颖，手机连接可直接运行
 
-[![](https://img.shields.io/badge/RELEASE-v3.0-red.svg)](https://gitee.com/songjianghu/AppiumAir.git)
+[![](https://img.shields.io/badge/RELEASE-v3.0-red.svg)](https://gitee.com/songjianghu/AppiumAir/repository/archive/v3.0?format=zip)
 [![](https://img.shields.io/badge/RELEASE-v2.0-blue.svg)](https://gitee.com/songjianghu/AppiumAir.git)
 [![](https://img.shields.io/badge/RELEASE-v1.0-blue.svg)](https://gitee.com/songjianghu/AppiumAir.git)
 ![](https://img.shields.io/badge/JDK-1.8+-green.svg)
@@ -14,7 +14,7 @@ AppiumAir是基于Appium二次封装的Android自动化框架，多线程方式�
 
 ## 主要功能
 - 多线程方式在多台手机上同时执行测试，大幅提高测试效率
-- 自动获取已连接各手机信息，自动启动已连接设备相同多个appium服务
+- 自动获取已连接各设备信息，自动启动已连接设备相同多个appium服务
 - 多个测试用例连续执行，无需重新启动APP，缩短测试用例执行间隔
 - 测试用例无需配置，自动扫描执行，让测试人员更加专注业务逻辑
 - 用例执行失败自动截图、录制视频、收集报错信息，列表中高亮显示
@@ -115,14 +115,14 @@ https://gitee.com/songjianghu/AppiumAir.git
 - 代码启动入口类：AppiumTest
 - APP配置文件：resources/config/config.properties
 - 其他说明文档：在resources/doc目录下
-- 测试报告位置： Spark/Spark.html
+- 测试报告位置： Spark/index.html
 
-## 技术交流
-[![加入QQ群](https://img.shields.io/badge/QQ群:AppiumAir-774757006-blue.svg)](https://qm.qq.com/cgi-bin/qm/qr?k=VLN_IPf76i_rfgzXOMhDc81xa7TrqFbz&jump_from=webapi)  
+## 技术交流QQ群
+[![加入QQ群](https://img.shields.io/badge/AppiumAir-774757006-blue.svg)](https://qm.qq.com/cgi-bin/qm/qr?k=VLN_IPf76i_rfgzXOMhDc81xa7TrqFbz&jump_from=webapi)  
 
 ## License
 
-本框架采用Apache-2.0开源许可进行编写。
+AppiumAir采用Apache-2.0开源许可进行编写。
 
 ## 开源支持
 

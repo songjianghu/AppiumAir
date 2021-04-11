@@ -17,10 +17,9 @@ public class APKInstaller {
 
     public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, IOException {
         boolean installResult = APKInstaller.class.getDeclaredConstructor().newInstance().doInstall("jd_lite20210323.apk");
-        System.out.println(installResult);
     }
 
-    private static AppiumTools appiumTools;
+    private AppiumTools appiumTools;
     String projectRootDir = null;
     String[] serialNumber;
 
@@ -34,16 +33,16 @@ public class APKInstaller {
             Process process = Runtime.getRuntime().exec("adb -s " + serialNumber[i] + " install " + apkPath);
             InputStream is = process.getInputStream();
             Scanner sc = new Scanner(is).useDelimiter("\\A");
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             while (sc.hasNext()) {
                 sb.append(sc.next());
             }
             boolean success = sb.toString().contains("Success");
             if (success) {
-                System.out.println("安装成功");
+                //System.out.println("安装成功");
                 logger.info("安装成功");
             }else {
-                System.out.println("安装失败");
+                //System.out.println("安装失败");
                 logger.error("安装失败");
             }
 

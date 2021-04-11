@@ -26,7 +26,7 @@ public class TestCaseScanner {
                 String fileName = file.getName();
                 // 判断该文件是否是.class文件,若是则进行处理
                 if (fileName.endsWith(".class")) {
-                    fileName = fileName.substring(0,fileName.indexOf("."));
+                    fileName = fileName.substring(0,fileName.indexOf('.'));
                     testCaseMap.put(fileName, packageName + "." + fileName);
                 }
             }

@@ -1,6 +1,7 @@
 package com.appiumair.controller;
 
 import com.appiumair.bean.AppiumParamter;
+import com.appiumair.report.LocalReport;
 import com.appiumair.util.PropertieTools;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,10 +13,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Appium多线程启动类：启动入口
  */
-public class AppiumTest {
+public class AppiumTest implements CountDownLatchLocalJS {
 
     static final Logger logger = LoggerFactory.getLogger(AppiumTest.class);
-    private static AtomicInteger appiumClientPort = new AtomicInteger(4723);
+    public static AtomicInteger appiumClientPort = new AtomicInteger(4723);
+    public static Map<String, String> androidInfoMap;
     private static AppiumTools appiumTools;
 
     public static void main(String[] args) {
@@ -23,7 +25,7 @@ public class AppiumTest {
         // 获取已连接了多少台Android手机
         appiumTools = new AppiumTools();
         // 用来存放Android手机的相关信息
-        Map<String, String> androidInfoMap = new ConcurrentHashMap<>();
+        androidInfoMap = new ConcurrentHashMap<>();
 
         // 获取所有已连接手机的serial number
         String[] serialNumberArr = appiumTools.getAndroidPhoneSerialNumber();
@@ -60,8 +62,15 @@ public class AppiumTest {
 
             AppiumThread appiumThread = new AppiumThread(appiumParamter);
             // 不同的线程传递不同的参数
-            Thread t = new Thread(appiumThread);
+            Thread t = new Thread(appiumThread,"T_" + appiumClientPort.toString());
             t.start();
+        }
+        try {
+            // 解决JS路途遥远导致报告打开缓慢问题
+            countDownLatch.await();
+            LocalReport.localJS();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
     }

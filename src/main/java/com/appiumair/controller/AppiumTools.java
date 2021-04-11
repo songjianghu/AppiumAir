@@ -121,7 +121,7 @@ public class AppiumTools {
             //Process process = Runtime.getRuntime().exec("adb -s 4P8H5PR8YPPZ5PHI shell getprop ro.serialno");
             InputStream is = serialno.getInputStream();
             Scanner sc = new Scanner(is).useDelimiter("\\A");
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             while (sc.hasNext()) {
                 sb.append(sc.next());
             }
@@ -142,17 +142,17 @@ public class AppiumTools {
      * 获取手机操作系统版本
      */
     public String getAndroidOSVersion(String serialNumber) {
-        Process version = null;
+        String str = null;
         try {
-            version = Runtime.getRuntime().exec("adb -s " + serialNumber +" shell getprop ro.build.version.release");
+            Process version = Runtime.getRuntime().exec("adb -s " + serialNumber +" shell getprop ro.build.version.release");
+            InputStream is = version.getInputStream();
+            Scanner sc = new Scanner(is).useDelimiter("\\A");
+
+            while (sc.hasNext()) {
+                str = sc.next().replaceAll(System.getProperty("line.separator"), "");
+            }
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        InputStream is = version.getInputStream();
-        Scanner sc = new Scanner(is).useDelimiter("\\A");
-        String str = null;
-        while (sc.hasNext()) {
-            str = sc.next().replaceAll(System.getProperty("line.separator"), "");
         }
         return str;
     }

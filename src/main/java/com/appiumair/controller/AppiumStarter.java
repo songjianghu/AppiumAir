@@ -62,7 +62,10 @@ public class AppiumStarter {
 	 * @param driver
 	 */
 	public static void stopAndroidDriver(AndroidDriver driver) {
-		driver.quit();
+		try {
+			driver.quit();
+		}catch (Exception e) {
+		}
 	}
 
 }
